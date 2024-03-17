@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  calibre-web:
+    image: linuxserver/calibre-web
+    container_name: calibre-web
+    environment:
+      - PUID=1032 # docker user
+      - PGID=65537 # docker group
+      - TZ=Europe/Madrid
+    volumes:
+      - /volume1/calibre-web/config:/config
+      - /volume1/media/books
+:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
